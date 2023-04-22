@@ -34,7 +34,7 @@ const ContactUS = () => {
   };
   return (
     <div className="w-full h-full min-h-screen flex flex-col items-center justify-center bg-gray-200">
-      <div className="mx-auto max-w-2xl lg:text-center mb-12">
+      <div className="max-w-2xl lg:text-center mx-2 mb-12">
         <h2 className="text-base font-semibold leading-7 text-orange-500">
           Contact Us
         </h2>
@@ -47,13 +47,6 @@ const ContactUS = () => {
         onSubmit={handleSubmit}
       >
         <div className="space">
-          <h2 className="text-xl font-semibold leading-7 text-orange-500">
-            Contact Us.
-          </h2>
-          <p className="mt-1 text-sm leading-6 text-gray-600">
-            Our friendly team is always ready to help you.
-          </p>
-
           <div className="w-full mb-4">
             <label
               htmlFor="name"

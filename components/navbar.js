@@ -5,7 +5,7 @@ import { inter, openSans, playfairDisplay } from "@/components/fonts";
 
 const Navbar = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const [showAboutSubMenu, setShowAboutSubMenu] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMobile(!isMobile);
@@ -15,41 +15,65 @@ const Navbar = () => {
     setShowAboutSubMenu(!showAboutSubMenu);
   };
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    contactSection.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div className="fixed w-full z-20 top-0 left-0 bg-black bg-opacity-50 backdrop-blur-md">
+    <div className="fixed w-full z-20 top-0 left-0 bg-dark bg-opacity-50 backdrop-blur-md">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-16 w-full">
           <div className="flex items-center justify-between w-full ">
             <div className={playfairDisplay.className}>
               <Link href="/" className="flex-shrink-0 inline-block relative">
-                <p className="font-bold text-xl text-orange-400 transition duration-300 transform hover:-translate-y-1">
+                <p className="font-bold text-xl text-white transition duration-300 transform hover:-translate-y-1">
                   Suitmedia.intern.test
                 </p>
               </Link>
             </div>
             <div className="hidden md:block">
               <div className="flex items-baseline space-x-4">
-                <Link
-                  href="https://github.com/Aloysiusgilang"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  About
-                </Link>
+                <div onMouseLeave={() => setOpen(false)} className="relative">
+                  <div
+                    onMouseOver={() => setOpen(true)}
+                    className="flex items-baseline space-x-4 rounded-md"
+                  >
+                    <span className=" px-3 py-2 rounded-lg text-white text-sm font-medium hover:bg-orange-500 hover:text-white">
+                      About
+                    </span>
+                  </div>
+
+                  <ul
+                    onMouseOver={() => setOpen(true)}
+                    className={`absolute right-0 w-40 py-2 rounded-lg shadow-xl bg-dark text-white ${
+                      open ? "block" : "hidden"
+                    }`}
+                  >
+                    <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-300">
+                      <Link href="/history">History</Link>
+                    </li>
+                    <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-300">
+                      <Link href="/vision">Vision Mission</Link>
+                    </li>
+                  </ul>
+                </div>
+
                 <Link
                   href="/our-work"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-white hover:bg-orange-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Our Works
                 </Link>
                 <Link
                   href="/our-team"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-white hover:bg-orange-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Our Team
                 </Link>
                 <Link
-                  href="/contact"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  href="#contact"
+                  className="text-white hover:bg-orange-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Contact
                 </Link>
@@ -104,23 +128,28 @@ const Navbar = () => {
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <Link
-              href="https://github.com/Aloysiusgilang"
+              href="/history"
               className="text-gray-300 hover:bg-gray-700 flex items-center hover:text-white  px-3 py-2 rounded-md text-base font-medium"
             >
-              <FaGithub className="inline-block mr-2" />
-              Github
+              History
             </Link>
             <Link
-              href="/works"
+              href="/vision"
               className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
-              Works
+              Vision
             </Link>
             <Link
-              href="/uses"
+              href="/our-team"
               className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
-              Uses
+              Our Team
+            </Link>
+            <Link
+              href="/our-work"
+              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            >
+              Our Work
             </Link>
           </div>
         </div>

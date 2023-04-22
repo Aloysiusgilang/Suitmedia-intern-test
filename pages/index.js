@@ -8,21 +8,6 @@ import MyParallax from "@/components/parallax";
 import Card from "@/components/card";
 import ContactUS from "@/components/contact-us";
 
-const inter = Inter({ subsets: ["latin"] });
-const images = [
-  {
-    id: 1,
-    src: "/about-bg.jpg",
-    heading: "WE DON'T HAVE THE BEST, BUT WE HAVE THE GREATEST TEAM",
-  },
-  {
-    id: 2,
-    src: "/bg.jpg",
-    heading:
-      "THIS IS A PLACE WHERE TECHNOLOGY & CREATIVITY FUSED INTO DIGITAL CHEMISTRY",
-  },
-];
-
 export default function Home() {
   return (
     <div className="w-full h-full flex flex-col">
@@ -37,7 +22,7 @@ export default function Home() {
       <div className="w-full h-full">
         <OurValues />
       </div>
-      <div className="w-full h-full">
+      <div id="contact" className="w-full h-full">
         <ContactUS />
       </div>
     </div>

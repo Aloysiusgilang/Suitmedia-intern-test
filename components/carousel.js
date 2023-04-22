@@ -27,6 +27,10 @@ function ImageCarousel() {
     setCurrentIndex((currentIndex + 1) % images.length);
   };
 
+  const prevImage = () => {
+    setCurrentIndex((currentIndex - 1 + images.length) % images.length);
+  };
+
   const handleSlideClick = (index) => {
     setCurrentIndex(index);
   };
@@ -34,6 +38,41 @@ function ImageCarousel() {
   return (
     <div className="h-full">
       <div className="relative">
+        <button
+          className="absolute z-10 top-1/2 -translate-y-1/2 left-0 focus:outline-none"
+          onClick={prevImage}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-8 w-8 text-white hover:text-gray-300 transition duration-300"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M15.2929,4.29289 C15.6834,3.90237 16.3166,3.90237 16.7071,4.29289 C17.0976,4.68342 17.0976,5.31658 16.7071,5.70711 L12.4142,10 L16.7071,14.2929 C17.0976,14.6834 17.0976,15.3166 16.7071,15.7071 C16.3166,16.0976 15.6834,16.0976 15.2929,15.7071 L10.2929,10.7071 C9.90237,10.3166 9.90237,9.68342 10.2929,9.29289 L15.2929,4.29289 Z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </button>
+        <button
+          className="absolute z-10 top-1/2 -translate-y-1/2 right-0 focus:outline-none"
+          onClick={nextImage}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-8 w-8 text-white hover:text-gray-300 transition duration-300"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M4.70711,4.29289 C4.31658,3.90237 3.68342,3.90237 3.29289,4.29289 C2.90237,4.68342 2.90237,5.31658 3.29289,5.70711 L7.58579,10 L3.29289,14.2929 C2.90237,14.6834 2.90237,15.3166 3.29289,15.7071 C3.68342,16.0976 4.31658,16.0976 4.70711,15.7071 L9.70711,10.7071 C10.0976,10.3166 10.0976,9.68342 9.70711,9.29289 L4.70711,4.29289 Z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </button>
+
         <Image
           className="w-full h-full min-h-[400px] max-h-full "
           src={images[currentIndex].src}
