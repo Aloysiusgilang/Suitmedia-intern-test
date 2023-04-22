@@ -5,6 +5,8 @@ import ImageCarousel from "@/components/carousel";
 import OurValues from "@/components/our-values";
 import { Parallax } from "react-parallax";
 import MyParallax from "@/components/parallax";
+import Card from "@/components/card";
+import ContactUS from "@/components/contact-us";
 
 const inter = Inter({ subsets: ["latin"] });
 const images = [
@@ -32,9 +34,11 @@ export default function Home() {
           <ImageCarousel />
         </div>
       </div>
-
       <div className="w-full h-full">
         <OurValues />
+      </div>
+      <div className="w-full h-full">
+        <ContactUS />
       </div>
     </div>
   );
